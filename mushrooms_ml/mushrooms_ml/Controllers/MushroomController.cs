@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using mushrooms_ml.Data;
 using mushrooms_ml.Models;
+using System.Diagnostics;
 
 namespace mushrooms_ml.Controllers
 {
@@ -93,6 +94,59 @@ namespace mushrooms_ml.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        // Метод для GET запроса
+        [HttpGet]
+        public IActionResult Classify()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Classify(string capShape, string capSurface, string capColor, string bruises,
+            string odor, string gillAttachment, string gillSpacing, string gillSize, string gillColor,
+            string stalkShape, string stalkRoot, string stalkSurfaceAboveRing, string stalkSurfaceBelowRing,
+            string stalkColorAboveRing, string stalkColorBelowRing, string veilType, string veilColor,
+            string ringNumber, string ringType, string sporePrintColor, string population, string habitat)
+        {
+            if (ModelState.IsValid)
+            {
+                string inputData = $"{capShape},{capSurface},{capColor},{bruises},{odor},{gillAttachment}," +
+                    $"{gillSpacing},{gillSize},{gillColor},{stalkShape},{stalkRoot},{stalkSurfaceAboveRing}," +
+                    $"{stalkSurfaceBelowRing},{stalkColorAboveRing},{stalkColorBelowRing},{veilType}," +
+                    $"{veilColor},{ringNumber},{ringType},{sporePrintColor},{population},{habitat}";
+
+                string pythonScriptPath = Path.Combine(Directory.GetCurrentDirectory(), "MushroomClassifier", "prediction_delegate.py");
+                Debug.WriteLine(pythonScriptPath);
+                Debug.WriteLine(inputData);
+
+                var psi = new ProcessStartInfo
+                {
+                    FileName = "python",
+                    Arguments = $"\"{pythonScriptPath}\" \"{inputData}\"",
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true
+                };
+
+                string prediction = "";
+                using (var process = Process.Start(psi))
+                {
+                    using (var reader = process.StandardOutput)
+                    {
+                        prediction = reader.ReadToEnd();
+                        Debug.WriteLine($"Prediction: {prediction}");
+                        if (process.ExitCode != 0)
+                        {
+                            Debug.WriteLine(process.ExitCode);
+                        }
+                    }
+                }
+                ViewBag.PredictionResult = prediction;
+            }
+
+            return View();
         }
     }
 }

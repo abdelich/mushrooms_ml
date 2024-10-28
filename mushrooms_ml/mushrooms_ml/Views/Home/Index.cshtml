@@ -4,5 +4,24 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div class="mt-4">
+        <a href="@Url.Action("Index", "Mushroom")" class="btn btn-primary btn-lg mx-2">View Mushrooms Data</a>
+        <a href="@Url.Action("Classify", "Mushroom")" class="btn btn-success btn-lg mx-2">Classify Mushroom</a>
+    </div>
 </div>
+
+<style>
+    .btn {
+        transition: background-color 0.3s, transform 0.3s;
+    }
+
+        .btn:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+    .btn-success:hover {
+        background-color: #28a745;
+        transform: scale(1.05);
+    }
+</style>
