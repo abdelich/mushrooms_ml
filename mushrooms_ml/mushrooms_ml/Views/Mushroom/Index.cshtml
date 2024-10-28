@@ -1,0 +1,80 @@
+﻿@model List<mushrooms_ml.Models.Mushroom>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Mushrooms data</h3>
+
+<a asp-action="Create" class="btn btn-primary">Create New Mushroom</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>CapShape</th>
+            <th>CapSurface</th>
+            <th>CapColor</th>
+            <th>Bruises</th>
+            <th>Odor</th>
+            <th>GillAttachment</th>
+            <th>GillSpacing</th>
+            <th>GillSize</th>
+            <th>GillColor</th>
+            <th>StalkShape</th>
+            <th>StalkRoot</th>
+            <th>StalkSurfaceAboveRing</th>
+            <th>StalkSurfaceBelowRing</th>
+            <th>StalkColorAboveRing</th>
+            <th>StalkColorBelowRing</th>
+            <th>VeilType</th>
+            <th>VeilColor</th>
+            <th>RingNumber</th>
+            <th>RingType</th>
+            <th>SporePrintColor</th>
+            <th>Population</th>
+            <th>Habitat</th>
+            <th>Poisonous</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var mushroom in Model)
+        {
+            <tr>
+                <td>@mushroom.Id</td>
+                <td>@mushroom.CapShape</td>
+                <td>@mushroom.CapSurface</td>
+                <td>@mushroom.CapColor</td>
+                <td>@mushroom.Bruises</td>
+                <td>@mushroom.Odor</td>
+                <td>@mushroom.GillAttachment</td>
+                <td>@mushroom.GillSpacing</td>
+                <td>@mushroom.GillSize</td>
+                <td>@mushroom.GillColor</td>
+                <td>@mushroom.StalkShape</td>
+                <td>@mushroom.StalkRoot</td>
+                <td>@mushroom.StalkSurfaceAboveRing</td>
+                <td>@mushroom.StalkSurfaceBelowRing</td>
+                <td>@mushroom.StalkColorAboveRing</td>
+                <td>@mushroom.StalkColorBelowRing</td>
+                <td>@mushroom.VeilType</td>
+                <td>@mushroom.VeilColor</td>
+                <td>@mushroom.RingNumber</td>
+                <td>@mushroom.RingType</td>
+                <td>@mushroom.SporePrintColor</td>
+                <td>@mushroom.Population</td>
+                <td>@mushroom.Habitat</td>
+                <td>@mushroom.Poisonous</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@mushroom.Id">Edit</a>
+                </td>
+                <td>
+                    <form asp-action="Delete" asp-route-id="@mushroom.Id" method="post" style="display:inline;">
+                        <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this mushroom?');">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

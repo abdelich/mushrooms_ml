@@ -1,7 +1,21 @@
+using Microsoft.EntityFrameworkCore;
+using mushrooms_ml.Data;
+using SQLitePCL;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+string connectionString = builder.Configuration.GetConnectionString("MushroomsDatabase");
+
+builder.Services.AddDbContext<MushroomDbContext>(options =>
+    options.UseSqlite(connectionString));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+Batteries.Init();
+
+//CreateHostBuilder(args).Build().Run();
 
 var app = builder.Build();
 

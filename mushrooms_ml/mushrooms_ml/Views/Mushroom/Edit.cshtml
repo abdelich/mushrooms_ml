@@ -1,0 +1,326 @@
+﻿@model mushrooms_ml.Models.Mushroom
+@{
+    ViewData["Title"] = "Edit Mushroom";
+}
+
+<h3>Edit Mushroom</h3>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="CapShape">Cap Shape</label>
+        @Html.DropDownListFor(m => m.CapShape, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Cap Shape" },
+        new { Value = "b", Text = "bell" },
+        new { Value = "c", Text = "conical" },
+        new { Value = "x", Text = "convex" },
+        new { Value = "f", Text = "flat" },
+        new { Value = "k", Text = "knobbed" },
+        new { Value = "s", Text = "sunken" }
+        }, "Value", "Text", Model.CapShape), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CapSurface">Cap Surface</label>
+        @Html.DropDownListFor(m => m.CapSurface, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Cap Surface" },
+        new { Value = "f", Text = "fibrous" },
+        new { Value = "g", Text = "grooves" },
+        new { Value = "y", Text = "scaly" },
+        new { Value = "s", Text = "smooth" }
+        }, "Value", "Text", Model.CapSurface), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CapColor">Cap Color</label>
+        @Html.DropDownListFor(m => m.CapColor, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Cap Color" },
+        new { Value = "n", Text = "brown" },
+        new { Value = "b", Text = "buff" },
+        new { Value = "c", Text = "cinnamon" },
+        new { Value = "g", Text = "gray" },
+        new { Value = "r", Text = "green" },
+        new { Value = "p", Text = "pink" },
+        new { Value = "u", Text = "purple" },
+        new { Value = "e", Text = "red" },
+        new { Value = "w", Text = "white" },
+        new { Value = "y", Text = "yellow" }
+        }, "Value", "Text", Model.CapColor), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Bruises">Bruises?</label>
+        @Html.DropDownListFor(m => m.Bruises, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Bruises" },
+        new { Value = "t", Text = "Yes" },
+        new { Value = "f", Text = "No" }
+        }, "Value", "Text", Model.Bruises), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Odor">Odor</label>
+        @Html.DropDownListFor(m => m.Odor, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Odor" },
+        new { Value = "a", Text = "almond" },
+        new { Value = "l", Text = "anise" },
+        new { Value = "c", Text = "creosote" },
+        new { Value = "y", Text = "fishy" },
+        new { Value = "f", Text = "foul" },
+        new { Value = "m", Text = "musty" },
+        new { Value = "n", Text = "none" },
+        new { Value = "p", Text = "pungent" },
+        new { Value = "s", Text = "spicy" }
+        }, "Value", "Text", Model.Odor), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GillAttachment">Gill Attachment</label>
+        @Html.DropDownListFor(m => m.GillAttachment, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Gill Attachment" },
+        new { Value = "a", Text = "attached" },
+        new { Value = "d", Text = "descending" },
+        new { Value = "f", Text = "free" },
+        new { Value = "n", Text = "notched" }
+        }, "Value", "Text", Model.GillAttachment), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GillSpacing">Gill Spacing</label>
+        @Html.DropDownListFor(m => m.GillSpacing, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Gill Spacing" },
+        new { Value = "c", Text = "close" },
+        new { Value = "w", Text = "crowded" },
+        new { Value = "d", Text = "distant" }
+        }, "Value", "Text", Model.GillSpacing), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GillSize">Gill Size</label>
+        @Html.DropDownListFor(m => m.GillSize, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Gill Size" },
+        new { Value = "b", Text = "broad" },
+        new { Value = "n", Text = "narrow" }
+        }, "Value", "Text", Model.GillSize), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GillColor">Gill Color</label>
+        @Html.DropDownListFor(m => m.GillColor, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Gill Color" },
+        new { Value = "k", Text = "black" },
+        new { Value = "n", Text = "brown" },
+        new { Value = "b", Text = "buff" },
+        new { Value = "h", Text = "chocolate" },
+        new { Value = "g", Text = "gray" },
+        new { Value = "r", Text = "green" },
+        new { Value = "o", Text = "orange" },
+        new { Value = "p", Text = "pink" },
+        new { Value = "u", Text = "purple" },
+        new { Value = "e", Text = "red" },
+        new { Value = "w", Text = "white" },
+        new { Value = "y", Text = "yellow" }
+        }, "Value", "Text", Model.GillColor), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkShape">Stalk Shape</label>
+        @Html.DropDownListFor(m => m.StalkShape, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Stalk Shape" },
+        new { Value = "e", Text = "enlarging" },
+        new { Value = "t", Text = "tapering" }
+        }, "Value", "Text", Model.StalkShape), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkRoot">Stalk Root</label>
+        @Html.DropDownListFor(m => m.StalkRoot, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Stalk Root" },
+        new { Value = "b", Text = "bulbous" },
+        new { Value = "c", Text = "club" },
+        new { Value = "u", Text = "cup" },
+        new { Value = "e", Text = "equal" },
+        new { Value = "z", Text = "rhizomorphs" },
+        new { Value = "r", Text = "rooted" },
+        new { Value = "?", Text = "missing" }
+        }, "Value", "Text", Model.StalkRoot), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkSurfaceAboveRing">Stalk Surface Above Ring</label>
+        @Html.DropDownListFor(m => m.StalkSurfaceAboveRing, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Stalk Surface Above Ring" },
+        new { Value = "f", Text = "fibrous" },
+        new { Value = "y", Text = "scaly" },
+        new { Value = "k", Text = "silky" },
+        new { Value = "s", Text = "smooth" }
+        }, "Value", "Text", Model.StalkSurfaceAboveRing), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkSurfaceBelowRing">Stalk Surface Below Ring</label>
+        @Html.DropDownListFor(m => m.StalkSurfaceBelowRing, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Stalk Surface Below Ring" },
+        new { Value = "f", Text = "fibrous" },
+        new { Value = "y", Text = "scaly" },
+        new { Value = "k", Text = "silky" },
+        new { Value = "s", Text = "smooth" }
+        }, "Value", "Text", Model.StalkSurfaceBelowRing), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkColorAboveRing">Stalk Color Above Ring</label>
+        @Html.DropDownListFor(m => m.StalkColorAboveRing, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Stalk Color Above Ring" },
+        new { Value = "n", Text = "brown" },
+        new { Value = "b", Text = "buff" },
+        new { Value = "c", Text = "cinnamon" },
+        new { Value = "g", Text = "gray" },
+        new { Value = "o", Text = "orange" },
+        new { Value = "p", Text = "pink" },
+        new { Value = "e", Text = "red" },
+        new { Value = "w", Text = "white" },
+        new { Value = "y", Text = "yellow" }
+        }, "Value", "Text", Model.StalkColorAboveRing), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkColorBelowRing">Stalk Color Below Ring</label>
+        @Html.DropDownListFor(m => m.StalkColorBelowRing, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Stalk Color Below Ring" },
+        new { Value = "n", Text = "brown" },
+        new { Value = "b", Text = "buff" },
+        new { Value = "c", Text = "cinnamon" },
+        new { Value = "g", Text = "gray" },
+        new { Value = "o", Text = "orange" },
+        new { Value = "p", Text = "pink" },
+        new { Value = "e", Text = "red" },
+        new { Value = "w", Text = "white" },
+        new { Value = "y", Text = "yellow" }
+        }, "Value", "Text", Model.StalkColorBelowRing), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VeilType">Veil Type</label>
+        @Html.DropDownListFor(m => m.VeilType, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Veil Type" },
+        new { Value = "p", Text = "partial" },
+        new { Value = "u", Text = "universal" }
+        }, "Value", "Text", Model.VeilType), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VeilColor">Veil Color</label>
+        @Html.DropDownListFor(m => m.VeilColor, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Veil Color" },
+        new { Value = "n", Text = "brown" },
+        new { Value = "o", Text = "orange" },
+        new { Value = "w", Text = "white" },
+        new { Value = "y", Text = "yellow" }
+        }, "Value", "Text", Model.VeilColor), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RingNumber">Ring Number</label>
+        @Html.DropDownListFor(m => m.RingNumber, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Ring Number" },
+        new { Value = "n", Text = "none" },
+        new { Value = "o", Text = "one" },
+        new { Value = "t", Text = "two" }
+        }, "Value", "Text", Model.RingNumber), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RingType">Ring Type</label>
+            @Html.DropDownListFor(m => m.RingType, new SelectList(new[]
+            {
+            new { Value = "", Text = "Select Spore Print Color" },
+            new { Value = "c", Text = "cobwebby" },
+            new { Value = "e", Text = "evanescent" },
+            new { Value = "f", Text = "flaring" },
+            new { Value = "l", Text = "large" },
+            new { Value = "n", Text = "none" },
+            new { Value = "p", Text = "pendant" },
+            new { Value = "s", Text = "sheathing" },
+            new { Value = "z", Text = "zone" }
+            }, "Value", "Text", Model.RingType), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SporePrintColor">Spore Print Color</label>
+        @Html.DropDownListFor(m => m.SporePrintColor, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Spore Print Color" },
+        new { Value = "k", Text = "black" },
+        new { Value = "n", Text = "brown" },
+        new { Value = "b", Text = "buff" },
+        new { Value = "h", Text = "chocolate" },
+        new { Value = "r", Text = "green" },
+        new { Value = "o", Text = "orange" },
+        new { Value = "u", Text = "purple" },
+        new { Value = "w", Text = "white" },
+        new { Value = "y", Text = "yellow" }
+        }, "Value", "Text", Model.SporePrintColor), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Population">Population</label>
+        @Html.DropDownListFor(m => m.Population, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Population" },
+        new { Value = "a", Text = "abundant" },
+        new { Value = "c", Text = "clustered" },
+        new { Value = "n", Text = "numerous" },
+        new { Value = "s", Text = "scattered" },
+        new { Value = "v", Text = "very abundant" },
+        new { Value = "y", Text = "solitary" }
+        }, "Value", "Text", Model.Population), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Habitat">Habitat</label>
+        @Html.DropDownListFor(m => m.Habitat, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Habitat" },
+        new { Value = "g", Text = "grasses" },
+        new { Value = "l", Text = "leaves" },
+        new { Value = "m", Text = "meadows" },
+        new { Value = "p", Text = "paths" },
+        new { Value = "u", Text = "urban" },
+        new { Value = "w", Text = "waste" },
+        new { Value = "d", Text = "woods" }
+        }, "Value", "Text", Model.Habitat), new { @class = "form-control", required = "required" })
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Poisonous">Poisonous?</label>
+        @Html.DropDownListFor(m => m.Poisonous, new SelectList(new[]
+                 {
+        new { Value = "", Text = "Select Poisonous" },
+        new { Value = "p", Text = "Yes" },
+        new { Value = "e", Text = "No" }
+        }, "Value", "Text", Model.Poisonous), new { @class = "form-control", required = "required" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+<a asp-action="Index" class="btn btn-secondary">Back</a>
