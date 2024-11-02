@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mushrooms_ml", "mushrooms_ml\mushrooms_ml.csproj", "{18209506-3727-4826-9ED5-B4821D28C13A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mushrooms_ml", "mushrooms_ml\mushrooms_ml.csproj", "{18209506-3727-4826-9ED5-B4821D28C13A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MushroomsCRUD", "MushroomsCRUD\MushroomsCRUD\MushroomsCRUD.csproj", "{6DD453C0-73E8-446F-832E-96400E0C3725}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{18209506-3727-4826-9ED5-B4821D28C13A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{18209506-3727-4826-9ED5-B4821D28C13A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{18209506-3727-4826-9ED5-B4821D28C13A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DD453C0-73E8-446F-832E-96400E0C3725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DD453C0-73E8-446F-832E-96400E0C3725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DD453C0-73E8-446F-832E-96400E0C3725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DD453C0-73E8-446F-832E-96400E0C3725}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

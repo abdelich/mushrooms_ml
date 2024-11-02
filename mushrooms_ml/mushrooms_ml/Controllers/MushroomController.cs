@@ -96,7 +96,6 @@ namespace mushrooms_ml.Controllers
             return RedirectToAction("Index");
         }
 
-        // Метод для GET запроса
         [HttpGet]
         public IActionResult Classify()
         {

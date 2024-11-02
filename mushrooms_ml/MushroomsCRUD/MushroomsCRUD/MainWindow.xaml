@@ -1,0 +1,161 @@
+﻿<Window x:Class="MushroomsCRUD.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Mushroom Management" Height="400" Width="600">
+
+    <Grid>
+        <TabControl>
+            <!--Mushroom-->
+            <TabItem Header="Mushroom">
+                <DataGrid x:Name="MushroomDataGrid" AutoGenerateColumns="False" Margin="10" SelectedCellsChanged="MushroomDataGrid_CellEditEnding">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Id" Binding="{Binding Id}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Cap Shape" Binding="{Binding CapShape}" />
+                        <DataGridTextColumn Header="Cap Surface" Binding="{Binding CapSurface}" />
+                        <DataGridTextColumn Header="Cap Color" Binding="{Binding CapColor}" />
+                        <DataGridTextColumn Header="Bruises" Binding="{Binding Bruises}" />
+                        <DataGridTextColumn Header="Odor" Binding="{Binding Odor}" />
+                        <DataGridTextColumn Header="Veil Type" Binding="{Binding VeilType}" />
+                        <DataGridTextColumn Header="Veil Color" Binding="{Binding VeilColor}" />
+                        <DataGridTextColumn Header="Ring Number" Binding="{Binding RingNumber}" />
+                        <DataGridTextColumn Header="Ring Type" Binding="{Binding RingType}" />
+                        <DataGridTextColumn Header="Spore Print Color" Binding="{Binding SporePrintColor}" />
+                        <DataGridTextColumn Header="Population" Binding="{Binding Population}" />
+                        <DataGridTextColumn Header="Habitat" Binding="{Binding Habitat}" />
+                        <DataGridTextColumn Header="Poisonous" Binding="{Binding Poisonous}" />
+                        <DataGridTemplateColumn Header="Actions">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Delete" 
+                                    Click="DeleteMushroom_Click" 
+                                    Tag="{Binding Id}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <!--Gill-->
+            <TabItem Header="Gill">
+                <DataGrid x:Name="GillDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Gills}" SelectedCellsChanged="GillDataGrid_SelectedCellsChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Gill Attachment" Binding="{Binding GillAttachment}" />
+                        <DataGridTextColumn Header="Gill Spacing" Binding="{Binding GillSpacing}" />
+                        <DataGridTextColumn Header="Gill Size" Binding="{Binding GillSize}" />
+                        <DataGridTextColumn Header="Gill Color" Binding="{Binding GillColor}" />
+                        <DataGridTemplateColumn Header="Actions">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Delete" 
+                                    Click="DeleteGill_Click" 
+                                    Tag="{Binding Id}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <!--Stalk-->
+            <TabItem Header="Stalk">
+                <DataGrid x:Name="StalkDataGrid" AutoGenerateColumns="False" ItemsSource="{Binding Stalks}" SelectedCellsChanged="StalkDataGrid_SelectedCellsChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" IsReadOnly="True"/>
+                        <DataGridTextColumn Header="Stalk Shape" Binding="{Binding StalkShape}" />
+                        <DataGridTextColumn Header="Stalk Root" Binding="{Binding StalkRoot}" />
+                        <DataGridTextColumn Header="Stalk Surface Above Ring" Binding="{Binding StalkSurfaceAboveRing}" />
+                        <DataGridTextColumn Header="Stalk Surface Below Ring" Binding="{Binding StalkSurfaceBelowRing}" />
+                        <DataGridTextColumn Header="Stalk Color Above Ring" Binding="{Binding StalkColorAboveRing}" />
+                        <DataGridTextColumn Header="Stalk Color Below Ring" Binding="{Binding StalkColorBelowRing}" />
+                        <DataGridTemplateColumn Header="Actions">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Delete" 
+                                Click="DeleteStalk_Click" 
+                                Tag="{Binding Id}" />
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+
+            <TabItem Header="Add Mushroom">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Cap Shape:" />
+                    <TextBox x:Name="CapShapeTextBox" />
+
+                    <TextBlock Text="Cap Surface:" />
+                    <TextBox x:Name="CapSurfaceTextBox" />
+
+                    <TextBlock Text="Cap Color:" />
+                    <TextBox x:Name="CapColorTextBox" />
+
+                    <TextBlock Text="Bruises:" />
+                    <TextBox x:Name="BruisesTextBox" />
+
+                    <TextBlock Text="Odor:" />
+                    <TextBox x:Name="OdorTextBox" />
+
+                    <TextBlock Text="Veil Type:" />
+                    <TextBox x:Name="VeilTypeTextBox" />
+
+                    <TextBlock Text="Veil Color:" />
+                    <TextBox x:Name="VeilColorTextBox" />
+
+                    <TextBlock Text="Ring Number:" />
+                    <TextBox x:Name="RingNumberTextBox" />
+
+                    <TextBlock Text="Ring Type:" />
+                    <TextBox x:Name="RingTypeTextBox" />
+
+                    <TextBlock Text="Spore Print Color:" />
+                    <TextBox x:Name="SporePrintColorTextBox" />
+
+                    <TextBlock Text="Population:" />
+                    <TextBox x:Name="PopulationTextBox" />
+
+                    <TextBlock Text="Habitat:" />
+                    <TextBox x:Name="HabitatTextBox" />
+
+                    <TextBlock Text="Poisonous:" />
+                    <TextBox x:Name="PoisonousTextBox" />
+
+                    <TextBlock Text="Gill Attachment:" />
+                    <TextBox x:Name="GillAttachmentTextBox" />
+
+                    <TextBlock Text="Gill Spacing:" />
+                    <TextBox x:Name="GillSpacingTextBox" />
+
+                    <TextBlock Text="Gill Size:" />
+                    <TextBox x:Name="GillSizeTextBox" />
+
+                    <TextBlock Text="Gill Color:" />
+                    <TextBox x:Name="GillColorTextBox" />
+
+                    <TextBlock Text="Stalk Shape:" />
+                    <TextBox x:Name="StalkShapeTextBox" />
+
+                    <TextBlock Text="Stalk Root:" />
+                    <TextBox x:Name="StalkRootTextBox" />
+
+                    <TextBlock Text="Stalk Surface Above Ring:" />
+                    <TextBox x:Name="StalkSurfaceAboveRingTextBox" />
+
+                    <TextBlock Text="Stalk Surface Below Ring:" />
+                    <TextBox x:Name="StalkSurfaceBelowRingTextBox" />
+
+                    <TextBlock Text="Stalk Color Above Ring:" />
+                    <TextBox x:Name="StalkColorAboveRingTextBox" />
+
+                    <TextBlock Text="Stalk Color Below Ring:" />
+                    <TextBox x:Name="StalkColorBelowRingTextBox" />
+
+                    <Button Content="Add" Click="AddMushroomButton_Click" Margin="0,10,0,0" />
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
