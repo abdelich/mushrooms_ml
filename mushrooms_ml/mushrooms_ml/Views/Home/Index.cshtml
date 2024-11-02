@@ -5,8 +5,19 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <div class="mt-4">
-        <a href="@Url.Action("Index", "Mushroom")" class="btn btn-primary btn-lg mx-2">View Mushrooms Data</a>
-        <a href="@Url.Action("Classify", "Mushroom")" class="btn btn-success btn-lg mx-2">Classify Mushroom</a>
+        <div class="mb-2">
+            <a href="@Url.Action("Classify", "Mushroom")" class="btn btn-success btn-lg">Classify Mushroom</a>
+        </div>
+        <div id="viewMushroomsDiv" style="display: none;">
+            <a href="@Url.Action("Index", "Mushroom")" class="btn btn-primary btn-lg">View Mushrooms Data</a>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <label>
+            <input type="checkbox" id="extendedModeCheckbox" onchange="toggleViewMushroomsButton()" />
+            Extended mode
+        </label>
     </div>
 </div>
 
@@ -25,3 +36,11 @@
         transform: scale(1.05);
     }
 </style>
+
+<script>
+    function toggleViewMushroomsButton() {
+        const checkBox = document.getElementById("extendedModeCheckbox");
+        const viewMushroomsDiv = document.getElementById("viewMushroomsDiv");
+        viewMushroomsDiv.style.display = checkBox.checked ? "block" : "none";
+    }
+</script>
