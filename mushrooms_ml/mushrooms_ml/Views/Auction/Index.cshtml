@@ -1,0 +1,25 @@
+@model IEnumerable<mushrooms_ml.Models.Mushroom>
+<h2>Auction Listings</h2>
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Buyout Price</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var item in Model)
+
+    {
+        <tr>
+            <td>@item.CapShape</td>
+            <td>@item.Price</td>
+            <td>@item.BuyoutPrice</td>
+            <td>
+                <a href="/Auction/View/@item.Id">View</a> |
+                <a href="/Auction/Buy/@item.Id">Buy</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<a href="/Auction/Create">Create New Auction Lot</a>
