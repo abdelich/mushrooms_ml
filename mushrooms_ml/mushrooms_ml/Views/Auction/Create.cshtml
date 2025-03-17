@@ -1,10 +1,290 @@
-<h2>Create New Auction Lot</h2>
-<form method="post">
-    <label>Name:</label>
-    <input type="text" name="CapShape" required />
-    <label>Price:</label>
-    <input type="number" name="Price" required />
-    <label>Buyout Price:</label>
-    <input type="number" name="BuyoutPrice" required />
-    <button type="submit">Create</button>
+﻿@model mushrooms_ml.Models.LotMushroomViewModel
+
+@{
+    ViewData["Title"] = "Create Lot";
+}
+
+<h2>Create Lot</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label>Price (USD)</label>
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+            </div>
+            <input asp-for="Price" class="form-control" type="number" step="0.01" />
+        </div>
+    </div>
+
+    <hr />
+    <h4>Mushroom Properties</h4>
+
+    <div class="form-group">
+        <label asp-for="CapShape">Cap Shape</label>
+        <select asp-for="CapShape" class="form-control">
+            <option value="b">Bell</option>
+            <option value="c">Conical</option>
+            <option value="x">Convex</option>
+            <option value="f">Flat</option>
+            <option value="k">Knobbed</option>
+            <option value="s">Sunken</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CapSurface">Cap Surface</label>
+        <select asp-for="CapSurface" class="form-control">
+            <option value="f">Fibrous</option>
+            <option value="g">Grooves</option>
+            <option value="y">Scaly</option>
+            <option value="s">Smooth</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CapColor">Cap Color</label>
+        <select asp-for="CapColor" class="form-control">
+            <option value="n">Brown</option>
+            <option value="b">Buff</option>
+            <option value="c">Cinnamon</option>
+            <option value="g">Gray</option>
+            <option value="r">Green</option>
+            <option value="p">Pink</option>
+            <option value="u">Purple</option>
+            <option value="e">Red</option>
+            <option value="w">White</option>
+            <option value="y">Yellow</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Bruises">Bruises</label>
+        <select asp-for="Bruises" class="form-control">
+            <option value="t">Yes</option>
+            <option value="f">No</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Odor">Odor</label>
+        <select asp-for="Odor" class="form-control">
+            <option value="a">Almond</option>
+            <option value="l">Anise</option>
+            <option value="c">Creosote</option>
+            <option value="y">Fishy</option>
+            <option value="f">Foul</option>
+            <option value="m">Musty</option>
+            <option value="n">None</option>
+            <option value="p">Pungent</option>
+            <option value="s">Spicy</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GillAttachment">Gill Attachment</label>
+        <select asp-for="GillAttachment" class="form-control">
+            <option value="a">Attached</option>
+            <option value="d">Descending</option>
+            <option value="f">Free</option>
+            <option value="n">Notched</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GillSpacing">Gill Spacing</label>
+        <select asp-for="GillSpacing" class="form-control">
+            <option value="c">Close</option>
+            <option value="w">Crowded</option>
+            <option value="d">Distant</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GillSize">Gill Size</label>
+        <select asp-for="GillSize" class="form-control">
+            <option value="b">Broad</option>
+            <option value="n">Narrow</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="GillColor">Gill Color</label>
+        <select asp-for="GillColor" class="form-control">
+            <option value="k">Black</option>
+            <option value="n">Brown</option>
+            <option value="b">Buff</option>
+            <option value="h">Chocolate</option>
+            <option value="g">Gray</option>
+            <option value="r">Green</option>
+            <option value="o">Orange</option>
+            <option value="p">Pink</option>
+            <option value="u">Purple</option>
+            <option value="e">Red</option>
+            <option value="w">White</option>
+            <option value="y">Yellow</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkShape">Stalk Shape</label>
+        <select asp-for="StalkShape" class="form-control">
+            <option value="e">Enlarging</option>
+            <option value="t">Tapering</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkRoot">Stalk Root</label>
+        <select asp-for="StalkRoot" class="form-control">
+            <option value="b">Bulbous</option>
+            <option value="c">Club</option>
+            <option value="u">Cup</option>
+            <option value="e">Equal</option>
+            <option value="z">Rhizomorphs</option>
+            <option value="r">Rooted</option>
+            <option value="?">Missing</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkSurfaceAboveRing">Stalk Surface Above Ring</label>
+        <select asp-for="StalkSurfaceAboveRing" class="form-control">
+            <option value="f">Fibrous</option>
+            <option value="y">Scaly</option>
+            <option value="k">Silky</option>
+            <option value="s">Smooth</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkSurfaceBelowRing">Stalk Surface Below Ring</label>
+        <select asp-for="StalkSurfaceBelowRing" class="form-control">
+            <option value="f">Fibrous</option>
+            <option value="y">Scaly</option>
+            <option value="k">Silky</option>
+            <option value="s">Smooth</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkColorAboveRing">Stalk Color Above Ring</label>
+        <select asp-for="StalkColorAboveRing" class="form-control">
+            <option value="n">Brown</option>
+            <option value="b">Buff</option>
+            <option value="c">Cinnamon</option>
+            <option value="g">Gray</option>
+            <option value="o">Orange</option>
+            <option value="p">Pink</option>
+            <option value="e">Red</option>
+            <option value="w">White</option>
+            <option value="y">Yellow</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="StalkColorBelowRing">Stalk Color Below Ring</label>
+        <select asp-for="StalkColorBelowRing" class="form-control">
+            <option value="n">Brown</option>
+            <option value="b">Buff</option>
+            <option value="c">Cinnamon</option>
+            <option value="g">Gray</option>
+            <option value="o">Orange</option>
+            <option value="p">Pink</option>
+            <option value="e">Red</option>
+            <option value="w">White</option>
+            <option value="y">Yellow</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VeilType">Veil Type</label>
+        <select asp-for="VeilType" class="form-control">
+            <option value="p">Partial</option>
+            <option value="u">Universal</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="VeilColor">Veil Color</label>
+        <select asp-for="VeilColor" class="form-control">
+            <option value="n">Brown</option>
+            <option value="o">Orange</option>
+            <option value="w">White</option>
+            <option value="y">Yellow</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RingNumber">Ring Number</label>
+        <select asp-for="RingNumber" class="form-control">
+            <option value="n">None</option>
+            <option value="o">One</option>
+            <option value="t">Two</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="RingType">Ring Type</label>
+        <select asp-for="RingType" class="form-control">
+            <option value="c">Cobwebby</option>
+            <option value="e">Evanescent</option>
+            <option value="f">Flaring</option>
+            <option value="l">Large</option>
+            <option value="n">None</option>
+            <option value="p">Pendant</option>
+            <option value="s">Sheathing</option>
+            <option value="z">Zone</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SporePrintColor">Spore Print Color</label>
+        <select asp-for="SporePrintColor" class="form-control">
+            <option value="k">Black</option>
+            <option value="n">Brown</option>
+            <option value="b">Buff</option>
+            <option value="h">Chocolate</option>
+            <option value="r">Green</option>
+            <option value="o">Orange</option>
+            <option value="u">Purple</option>
+            <option value="w">White</option>
+            <option value="y">Yellow</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Population">Population</label>
+        <select asp-for="Population" class="form-control">
+            <option value="a">Abundant</option>
+            <option value="c">Clustered</option>
+            <option value="n">Numerous</option>
+            <option value="s">Scattered</option>
+            <option value="v">Several</option>
+            <option value="y">Solitary</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Habitat">Habitat</label>
+        <select asp-for="Habitat" class="form-control">
+            <option value="g">Grasses</option>
+            <option value="l">Leaves</option>
+            <option value="m">Meadows</option>
+            <option value="p">Paths</option>
+            <option value="u">Urban</option>
+            <option value="w">Waste</option>
+            <option value="d">Woods</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Poisonous">Poisonous</label>
+        <select asp-for="Poisonous" class="form-control">
+            <option value="edible">Edible</option>
+            <option value="poisonous">Poisonous</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
 </form>

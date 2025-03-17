@@ -1,12 +1,28 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    int? userId = HttpContextAccessor.HttpContext?.Session?.GetInt32("UserId");
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
+
+    @if (userId == null)
+    {
+        <a asp-controller="User" asp-action="Register" class="btn btn-success">Register</a>
+        <a asp-controller="User" asp-action="Login" class="btn btn-info">Login</a>
+    }
+    else
+    {
+        <a asp-controller="User" asp-action="Logout" class="btn btn-warning">Logout</a>
+    }
+
     <div class="mt-4">
         <div class="mb-2">
             <a href="@Url.Action("Classify", "Mushroom")" class="btn btn-success btn-lg">Classify Mushroom</a>
+            <a href="@Url.Action("Index", "Auction")" class="btn btn-warning btn-lg">View Lots</a>
         </div>
         <div id="viewMushroomsDiv" style="display: none;">
             <a href="@Url.Action("Index", "Mushroom")" class="btn btn-primary btn-lg">View Mushrooms Data</a>

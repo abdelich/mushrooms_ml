@@ -1,25 +1,48 @@
-@model IEnumerable<mushrooms_ml.Models.Mushroom>
-<h2>Auction Listings</h2>
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Buyout Price</th>
-        <th>Actions</th>
-    </tr>
-    @foreach (var item in Model)
+﻿@model IEnumerable<mushrooms_ml.Models.Lot>
 
-    {
+@{
+    ViewData["Title"] = "Auction";
+    int? currentUserId = ViewBag.CurrentUserId as int?;
+}
+
+<h2>Auction</h2>
+
+<a asp-action="Create" class="btn btn-primary">Create Lot</a>
+
+<table class="table mt-3">
+    <thead>
         <tr>
-            <td>@item.CapShape</td>
-            <td>@item.Price</td>
-            <td>@item.BuyoutPrice</td>
-            <td>
-                <a href="/Auction/View/@item.Id">View</a> |
-                <a href="/Auction/Buy/@item.Id">Buy</a>
-            </td>
+            <th>Lot Id</th>
+            <th>Mushroom Id</th>
+            <th>Author Name</th>
+            <th>Author Email</th>
+            <th>Price</th>
+            <th>Created Date</th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var lot in Model)
+        {
+            <tr>
+                <td>@lot.Id</td>
+                <td>
+                    @lot.MushroomId
+                    <a asp-action="Details" asp-route-id="@lot.Id" class="btn btn-info btn-sm ml-2">View</a>
+                </td>
+                <td>@lot.User?.Name</td>
+                <td>@lot.User?.Email</td>
+                <td>@lot.Price</td>
+                <td>@lot.CreatedDate</td>
+                <td>
+                    @if (currentUserId.HasValue && lot.UserId == currentUserId.Value)
+                    {
+                        <form asp-action="Delete" asp-route-id="@lot.Id" method="post" style="display:inline;">
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
-
-<a href="/Auction/Create">Create New Auction Lot</a>

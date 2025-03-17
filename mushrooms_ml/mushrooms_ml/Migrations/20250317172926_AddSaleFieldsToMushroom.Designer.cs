@@ -11,52 +11,14 @@ using mushrooms_ml.Data;
 namespace mushrooms_ml.Migrations
 {
     [DbContext(typeof(MushroomDbContext))]
-    [Migration("20250317171145_FixBuyerIdMapping")]
-    partial class FixBuyerIdMapping
+    [Migration("20250317172926_AddSaleFieldsToMushroom")]
+    partial class AddSaleFieldsToMushroom
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "9.0.3");
-
-            modelBuilder.Entity("mushrooms_ml.Models.AuctionItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("BuyerId")
-                        .HasColumnType("INTEGER")
-                        .HasColumnName("buyer_id");
-
-                    b.Property<decimal?>("BuyoutPrice")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("EndTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsSold")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("MushroomId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SellerId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<decimal>("StartingPrice")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("MushroomId");
-
-                    b.ToTable("auction_items", (string)null);
-                });
+            modelBuilder.HasAnnotation("ProductVersion", "8.0.10");
 
             modelBuilder.Entity("mushrooms_ml.Models.Mushroom", b =>
                 {
@@ -67,12 +29,6 @@ namespace mushrooms_ml.Migrations
                     b.Property<string>("Bruises")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("BuyerId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal?>("BuyoutPrice")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("CapColor")
                         .HasColumnType("TEXT");
 
@@ -80,12 +36,6 @@ namespace mushrooms_ml.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("CapSurface")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime?>("EndTime")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("GillAttachment")
@@ -124,9 +74,6 @@ namespace mushrooms_ml.Migrations
                     b.Property<string>("RingType")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("SellerId")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("SporePrintColor")
                         .HasColumnType("TEXT");
 
@@ -157,17 +104,6 @@ namespace mushrooms_ml.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Mushrooms");
-                });
-
-            modelBuilder.Entity("mushrooms_ml.Models.AuctionItem", b =>
-                {
-                    b.HasOne("mushrooms_ml.Models.Mushroom", "Mushroom")
-                        .WithMany()
-                        .HasForeignKey("MushroomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Mushroom");
                 });
 #pragma warning restore 612, 618
         }

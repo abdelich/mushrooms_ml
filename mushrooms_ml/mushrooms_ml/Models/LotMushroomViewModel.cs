@@ -1,8 +1,8 @@
 ﻿namespace mushrooms_ml.Models
 {
-    public class Mushroom
+    public class LotMushroomViewModel
     {
-        public int Id { get; set; }
+        public decimal Price { get; set; }
         public string? CapShape { get; set; }
         public string? CapSurface { get; set; }
         public string? CapColor { get; set; }
@@ -26,7 +26,5 @@
         public string? Population { get; set; }
         public string? Habitat { get; set; }
         public string? Poisonous { get; set; }
-        public bool IsForSale { get; set; }
-        public decimal? Price { get; set; }
     }
 }
