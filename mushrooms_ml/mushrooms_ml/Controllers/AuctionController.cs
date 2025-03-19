@@ -2,8 +2,6 @@
 using Microsoft.EntityFrameworkCore;
 using mushrooms_ml.Data;
 using mushrooms_ml.Models;
-using System.Threading.Tasks;
-using System;
 
 namespace mushrooms_ml.Controllers
 {
